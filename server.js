@@ -1,8 +1,13 @@
 const http = require('http');
 const redis = require('redis');
+const fs = require('fs')
+
+const redisHost = process.env.REDIS_HOST || '127.0.0.1'
+console.log(`connecting to redis at ${redisHost}`)
 
 const client = redis.createClient({
-    'host': '127.0.0.1'
+    'host': redisHost,
+    password: fs.readFileSync('/etc/redis-passwd/passwd')
 });
 
 const port = 8080;

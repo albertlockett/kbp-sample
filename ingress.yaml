@@ -4,7 +4,8 @@ metadata:
   name: frontend-ingress
 spec:
   rules:
-  - http:
+  - host: hello-world.info
+    http:
       paths:
       - path: /api
         backend:
